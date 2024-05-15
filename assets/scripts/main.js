@@ -5,6 +5,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 // Starts the program, all function calls trace back here
 function init() {
+	console.log("init");
 	// Get the recipes from localStorage
 	let recipes = getRecipesFromStorage();
 	// Add each recipe to the <main> element
@@ -70,7 +71,7 @@ function saveRecipesToStorage(recipes) {
 	//            header. It is possible in only a single line, but should
 	//            be no more than a few lines.
 
-	localStorage.setItem('recipes', recipes.toString());
+	localStorage.setItem('recipes', JSON.stringify(recipes));
 }
 
 /**
@@ -78,14 +79,16 @@ function saveRecipesToStorage(recipes) {
  * <button>.
  */
 function initFormHandler() {
+	console.log("start init form")
 	// B2. TODO - Get a reference to the <form> element
 	const formElement = document.querySelector('form');
 	// B3. TODO - Add an event listener for the 'submit' event, which fires when the
 	//            submit button is clicked
 
 	const submitButton = document.querySelector('button');
+	console.log(submitButton);
 
-	formElement.addEventListener('submit', (event) => {
+	submitButton.addEventListener('submit', (event) => {
 		
 		event.preventDefault();
 		const formData = new FormData(formElement);
@@ -114,6 +117,7 @@ function initFormHandler() {
 	// B10. TODO - Get a reference to the "Clear Local Storage" button
 	// B11. TODO - Add a click event listener to clear local storage button
 	const clearButton = document.getElementsByClassName('danger')[0];
+	console.log(clearButton);
 
 	clearButton.addEventListener('click', () => {
 		// Steps B12 & B13 will occur inside the event listener from step B11
