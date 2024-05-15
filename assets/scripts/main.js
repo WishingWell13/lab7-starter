@@ -26,7 +26,8 @@ function getRecipesFromStorage() {
 	//           header. It is possible in only a single line, but should
 	//           be no more than a few lines.
 
-	let fromStorage = localStorage.getItem("recipes") 
+	let fromStorage = localStorage.getItem("recipes");
+	console.log(fromStorage);
 
 	if(fromStorage == null){
 		return [];
@@ -57,6 +58,7 @@ function addRecipesToDocument(recipes) {
 	for(let i = 0; i < recipes.length; i++){
 		let recipeElement = document.createElement('recipe-card');
 		recipeElement.data = recipes[i];
+		mainElement.appendChild(recipeElement);
 	}
 }
 
@@ -65,20 +67,20 @@ function addRecipesToDocument(recipes) {
  * saves that string to 'recipes' in localStorage
  * @param {Array<Object>} recipes An array of recipes
  */
-/*function saveRecipesToStorage(recipes) {
+function saveRecipesToStorage(recipes) {
 	// EXPLORE - START (All explore numbers start with B)
 	// B1. TODO - Complete the functionality as described in this function
 	//            header. It is possible in only a single line, but should
 	//            be no more than a few lines.
-
+	console.log(JSON.stringify(recipes));
 	localStorage.setItem('recipes', JSON.stringify(recipes));
-}*/
+}
 
 /**
  * Adds the necessary event handlers to <form> and the clear storage
  * <button>.
  */
-/*function initFormHandler() {
+function initFormHandler() {
 	console.log("start init form")
 	// B2. TODO - Get a reference to the <form> element
 	const formElement = document.querySelector('form');
@@ -95,6 +97,7 @@ function addRecipesToDocument(recipes) {
 		const recipeObject = {};
 		formData.forEach((value, key) => {
 			recipeObject[key] = value;
+			// console.log(key + " " + value);
 		});
 		const recipeElement = document.createElement('recipe-card');
 		recipeElement.data = recipeObject;
@@ -129,4 +132,4 @@ function addRecipesToDocument(recipes) {
 			mainElement.removeChild(mainElement.firstChild);
 		}
 	});
-}*/
+}

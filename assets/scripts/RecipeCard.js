@@ -16,7 +16,7 @@ class RecipeCard extends HTMLElement {
 		let styleElement = document.createElement('style');
 
 		// A4. TODO - Insert all of the styles from cardTemplate.html into the <style> element you just made (copy everything in the <style> tag>)
-		styleElement.innerHTML = `
+		styleElement.innerHTML = `<style>
 		* {
 			font-family: sans-serif;
 			margin: 0;
@@ -92,7 +92,7 @@ class RecipeCard extends HTMLElement {
 			color: #70757A;
 			font-size: 12px;
 		  }
-		`;
+		</style>`;
 
 		// A5. TODO - Append the <style> and <article> elements to the Shadow DOM
 		this.shadowRoot.appendChild(rootElement);
@@ -138,7 +138,7 @@ class RecipeCard extends HTMLElement {
 		//           Remember to replace all the placeholders in the template with the data passed in.
 		//           i.e. imgSrc, titleLnk, etc
 
-		articleElement.innerHTML = `
+		articleElement.innerHTML = `<article>
 		<img src=${data.imgSrc}
 			alt=${data.imgAlt}>
 		<p class="title">
@@ -147,14 +147,14 @@ class RecipeCard extends HTMLElement {
 		<p class="organization">${data.organization}</p>
 		<div class="rating">
 			<span>${data.rating}</span>
-			<img src="../images/icons/${data.rating}-star.svg" alt="${data.rating} stars">
+			<img src="./assets/images/icons/${data.rating}-star.svg" alt="${data.rating} stars">
 			<span>(${data.numRatings})</span>
 		</div>
 		<time>${data.lengthTime}</time>
 		<p class="ingredients">
 			${data.ingredients}
 		</p>
-		`
+		</article>`;
 
 		// // Add the image
 		// let imgElement = document.createElement(`img`);
