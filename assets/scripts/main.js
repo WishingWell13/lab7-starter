@@ -27,7 +27,6 @@ function getRecipesFromStorage() {
 	//           be no more than a few lines.
 
 	let fromStorage = localStorage.getItem("recipes");
-	console.log(fromStorage);
 
 	if(fromStorage == null){
 		return [];
@@ -73,7 +72,6 @@ function saveRecipesToStorage(recipes) {
 	// B1. TODO - Complete the functionality as described in this function
 	//            header. It is possible in only a single line, but should
 	//            be no more than a few lines.
-	console.log(JSON.stringify(recipes));
 	localStorage.setItem('recipes', JSON.stringify(recipes));
 }
 
@@ -88,17 +86,13 @@ function initFormHandler() {
 	// B3. TODO - Add an event listener for the 'submit' event, which fires when the
 	//            submit button is clicked
 
-	const submitButton = document.querySelector('button');
-	console.log(submitButton);
-
-	submitButton.addEventListener('submit', (event) => {
-		
-		event.preventDefault();
+	formElement.addEventListener('submit', () => {
+		console.log("on submit running");
+		// event.preventDefault();
 		const formData = new FormData(formElement);
 		const recipeObject = {};
 		formData.forEach((value, key) => {
 			recipeObject[key] = value;
-			// console.log(key + " " + value);
 		});
 		const recipeElement = document.createElement('recipe-card');
 		recipeElement.data = recipeObject;
@@ -106,6 +100,7 @@ function initFormHandler() {
 		let recipes = getRecipesFromStorage();
 		recipes.push(recipeObject);
 		saveRecipesToStorage(recipes);
+		console.log(JSON.stringify(recipes));
 	});
 	// Steps B4-B9 will occur inside the event listener from step B3
 	// B4. TODO - Create a new FormData object from the <form> element reference above
@@ -121,7 +116,6 @@ function initFormHandler() {
 	// B10. TODO - Get a reference to the "Clear Local Storage" button
 	// B11. TODO - Add a click event listener to clear local storage button
 	const clearButton = document.getElementsByClassName('danger')[0];
-	console.log(clearButton);
 
 	clearButton.addEventListener('click', () => {
 		// Steps B12 & B13 will occur inside the event listener from step B11
