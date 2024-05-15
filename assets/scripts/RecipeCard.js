@@ -95,8 +95,8 @@ class RecipeCard extends HTMLElement {
 		`;
 
 		// A5. TODO - Append the <style> and <article> elements to the Shadow DOM
-		this.shadowRoot.appendChild(rootElement);
 		this.shadowRoot.appendChild(styleElement);
+		this.shadowRoot.appendChild(rootElement);
 	}
 
 	/**
@@ -138,7 +138,7 @@ class RecipeCard extends HTMLElement {
 		//           Remember to replace all the placeholders in the template with the data passed in.
 		//           i.e. imgSrc, titleLnk, etc
 
-		articleElement.innerHTML = `<article>
+		articleElement.innerHTML = `
 		<img src=${data.imgSrc}
 			alt=${data.imgAlt}>
 		<p class="title">
@@ -154,7 +154,7 @@ class RecipeCard extends HTMLElement {
 		<p class="ingredients">
 			${data.ingredients}
 		</p>
-		</article>`;
+		`;
 
 		// // Add the image
 		// let imgElement = document.createElement(`img`);
